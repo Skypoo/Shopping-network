@@ -32,14 +32,17 @@ if (isset($_POST["action"])&&($_POST["action"]=="add")){
 	  
         
 	    else{
+        $password = $_POST["txtPassWord"];
+        $hash = password_hash($password,PASSWORD_DEFAULT);
+        
         $sql_add  = "INSERT INTO `UserData` (`user_name`,`user_password`) VALUES (";
         $sql_add .= "'".$_POST["txtUserName"]."',";
-        $sql_add .= "'".$_POST["txtPassWord"]."')";
+        $sql_add .= "'".$hash."')";
         
         mysql_query($sql_add);
         setcookie("userName", $UserName);
         
-        header("Location: test.php");
+        header("Location: index.php");
 	    }
 }
 
@@ -52,12 +55,12 @@ if (isset($_POST["buttonOk"]))
 	if ((trim($UserName) != "") && (trim($PassWord) != ""))
 	{
 		setcookie("userName", $UserName);
-		header("Location: test.php");
+		header("Location: index.php");
 		exit();
 	}
 	
 	else
-		header("Location:test.php");
+		header("Location:index.php");
 		exit();
 }
 */
@@ -91,7 +94,7 @@ if (isset($_POST["buttonOk"]))
     <!--navbar-fixed-top將巡導列永遠保持在畫面上方-->
     <div class="container-fluid" style="height:175px;border-bottom-style:solid;border-color:red;">
         <div class="navbar-header" >
-            <a class="navbar-brand"  href="test.php">
+            <a class="navbar-brand"  href="index.php">
                 <img src="photo/photo5.jpg">
             </a>
         </div>

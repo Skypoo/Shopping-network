@@ -16,26 +16,28 @@ if (isset($_POST["buttonOk"]))
 {
 	$UserName = $_POST["txtUserName"];
 	$PassWord = $_POST["txtPassWord"];
-	$sql_query = "SELECT * FROM `UserData` WHERE `user_name` = '".$UserName."' and `user_password` = '".$PassWord."'";
+ 	$sql_query = "SELECT * FROM `UserData` WHERE `user_name` = '".$UserName."'";
+ 	
+ 	// and `user_password` = '".$PassWord."'
 	
 	$result = mysql_query($sql_query);
 
+ 
 	
 	$row_Login = mysql_fetch_assoc($result);
 	$DataUserName = $row_Login["user_name"];
 	$DataPassWord = $row_Login["user_password"];
-	
-	if ((trim($UserName) != "") && (trim($PassWord) != ""))
-	{
-	    
-	    if (($DataUserName==$UserName)&&($DataPassWord==$PassWord)){
+
+
+	if ((trim($UserName) != "") && (trim($PassWord) != "")){
+	    if (($DataUserName==$UserName)&&(password_verify($PassWord,$DataPassWord))){
 		setcookie("userName", $UserName);
-		header("Location: test.php");
+		header("Location: index.php");
 		exit();
 		}
 	
 	else
-		header("Location:test.php");
+		header("Location:index.php");
 		exit();
 	}
 }
@@ -49,12 +51,12 @@ if (isset($_POST["buttonOk"]))
 	if ((trim($UserName) != "") && (trim($PassWord) != ""))
 	{
 		setcookie("userName", $UserName);
-		header("Location: test.php");
+		header("Location: index.php");
 		exit();
 	}
 	
 	else
-		header("Location:test.php");
+		header("Location:index.php");
 		exit();
 }
 */
@@ -88,7 +90,7 @@ if (isset($_POST["buttonOk"]))
     <!--navbar-fixed-top將巡導列永遠保持在畫面上方-->
     <div class="container-fluid" style="height:175px;border-bottom-style:solid;border-color:red;">
         <div class="navbar-header" >
-            <a class="navbar-brand"  href="test.php">
+            <a class="navbar-brand"  href="index.php">
                 <img src="photo/photo5.jpg">
             </a>
         </div>

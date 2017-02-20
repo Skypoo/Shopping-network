@@ -30,7 +30,7 @@ else
   
 if($_GET['Method']=='Bye'){
   setcookie ("userName", "", time() - 3600);
-	header("Location: test.php");
+	header("Location: index.php");
 }  
   
 
@@ -99,13 +99,13 @@ if($_GET['Method']=='Bye'){
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button> 
-          <a class="navbar-brand"  href="test.php">阿漳線上購物網</a>
+          <a class="navbar-brand"  href="index.php">阿漳線上購物網</a>
         </div>
         
         
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">  
         <ul class="nav navbar-nav">
-          <li class="active"><a href="test.php"><span class = "glyphicon glyphicon-home"></span></a></li>
+          <li class="active"><a href="index.php"><span class = "glyphicon glyphicon-home"></span></a></li>
           <!--class = "active"導覽列背景加深
           <span class = "glyphicon glyphicon-home">使用bootstrap提供的首頁圖片
           -->
@@ -152,7 +152,7 @@ if($_GET['Method']=='Bye'){
           <?php if ($UserName == "Guest"): ?>
           <li><a href="Login.php"><span class="glyphicon glyphicon-user"></span>Login</a></li>
           <?php else: ?>
-          <li><a href="test.php?Method=Bye"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+          <li><a href="index.php?Method=Bye"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
           <?php endif; ?>
           
         </ul>
